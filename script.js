@@ -70,13 +70,15 @@ function loader() {
         duration:.48,
         ease: "none"
     })
-    loadertl.to("#loader", {
+    loadertl.to(["#loader", "#masking"], {  
         opacity: 0,
-        duration: .5,
+        duration: 0.5,
         onComplete: function () {
             document.querySelector("#loader").style.display = "none";  
+            document.querySelector("#masking").style.display = "none";  
         }
     });
+    
     loadertl.from("#nav-bar",{
         y:-50,
         opacity:0,
