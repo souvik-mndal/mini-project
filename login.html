@@ -29,12 +29,27 @@
             /* background-color: red; */
             width: 26vw;
             overflow: hidden;
+            position: relative;
         }
         #engage video{
             height: 100%;
             width: 100%;
             scale: 3;
             border: none;
+        }
+        #engage #icon-cont{
+            position: absolute;
+            font-size: 2.3vw;
+            height: 3vw;
+            width: 3vw;
+            top: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 10%;
+            z-index: 5;
+            background-color: white;
+            border-radius: 50%;
         }
         #form_cont{
             height: 100vh;
@@ -100,6 +115,7 @@
     <div id="wrapper">
         <div id="content">
             <div id="engage">
+                <abbr title="Go back"><div id="icon-cont"><i class="ri-arrow-left-s-line"></i></div></abbr>
                 <video autoplay loop muted src="./source/signInEngage.mp4"></video>
             </div>
             <div id="form_cont">
@@ -121,5 +137,10 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("icon-cont").addEventListener("click", function() {
+            window.location.href = "index.html"; // Change to the actual signup page URL
+        });
+    </script>
 </body>
 </html>
