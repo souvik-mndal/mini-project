@@ -112,6 +112,13 @@
             text-align: center;
             font-size: .98vw;
         }
+        .error { 
+            color: red; font-size: 1.02vw;
+            /* background-color: aqua;  */
+            text-align: start;
+            margin-left: 10px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -123,17 +130,18 @@
             </div>
             <div id="form_cont">
                 <div id="maincont">
-                    <form action="https://httpbin.org/get" method="get">
+                    <form action="logindb.php" method="post">
                         <h2>Welcome back to InsideEd</h2>
+                        <p class="error" id="error-message"></p>
                         <div id="takeinp">
                             
                             <label for="email">Email</label><br>
-                            <input class="inp" type="email" id="email" name="userEmail" placeholder="janedoe@gmail.com" autocomplete="on"><br>
+                            <input class="inp" type="email" id="email" name="oldUserEmail" placeholder="janedoe@gmail.com" autocomplete="on"><br>
                             <label for="password">Password</label><br>
-                            <input class="inp" type="password" id="password" name="userPassword" required placeholder="6+ charecters"><br>
+                            <input class="inp" type="password" id="password" name="oldUserPassword" required placeholder="6+ charecters"><br>
                         </div>
                         
-                        <input id="submit" type="submit" value="Sign In">
+                        <input id="submit" type="submit" name="loginSubmit" value="Sign In">
                         <p>Don't have an account?<a href="signup.html">Sign up</a></p>
                     </form>
                 </div>
@@ -144,6 +152,16 @@
         document.getElementById("icon-cont").addEventListener("click", function() {
             window.location.href = "index.html"; // Change to the actual signup page URL
         });
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Display error message from the URL
+        const errorMessage = getQueryParam("error");
+        if (errorMessage) {
+            document.getElementById("error-message").innerText = decodeURIComponent(errorMessage);
+        }
     </script>
 </body>
 </html>

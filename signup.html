@@ -112,6 +112,13 @@
             text-align: center;
             font-size: .98vw;
         }
+        .error { 
+            color: red; font-size: 1.02vw;
+            /* background-color: aqua;  */
+            text-align: start;
+            margin-left: 10px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -124,15 +131,20 @@
             </div>
             <div id="form_cont">
                 <div id="maincont">
-                    <form action="https://httpbin.org/get" method="get">
+                    <form action="logindb.php" method="post">
                         <h2>Sign up to InsideEd</h2>
+                        <p class="error" id="error-message"></p>
+                        
+                        
+                        
                         <div id="takeinp">
                             <label for="name">Name</label><br>
-                            <input class="inp" placeholder="Jane Doe" type="text" id="name" name="userName" required autocomplete="on"><br>
+                            <input class="inp" placeholder="Jane Doe" type="text" id="name" name="newUsername" required autocomplete="on"><br>
+                            
                             <label for="email">Email</label><br>
-                            <input class="inp" type="email" id="email" name="userEmail" placeholder="janedoe@gmail.com" autocomplete="on"><br>
+                            <input class="inp" type="email" id="email" name="newUserEmail" placeholder="janedoe@gmail.com" autocomplete="on"><br>
                             <label for="password">Password</label><br>
-                            <input class="inp" type="password" id="password" name="userPassword" required placeholder="6+ characters"><br>
+                            <input class="inp" type="password" id="password" name="newUserPassword" required placeholder="6+ characters"><br>
                             <label for="type">Login Type</label><br>
                             <select name="userType" id="type">
                                 <option value="Teacher">Teacher</option>
@@ -140,7 +152,7 @@
                             </select>
                         </div>
                         
-                        <input id="submit" type="submit" value="Create Account">
+                        <input id="submit" name="newSubmit" type="submit" value="Create Account">
                         <p>Aready have an account?<a href="login.html">Sign in</a></p>
                     </form>
                 </div>
@@ -151,6 +163,16 @@
         document.getElementById("icon-cont").addEventListener("click", function() {
             window.location.href = "index.html"; // Change to the actual signup page URL
         });
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Display error message from the URL
+        const errorMessage = getQueryParam("error");
+        if (errorMessage) {
+            document.getElementById("error-message").innerText = decodeURIComponent(errorMessage);
+        }
     </script>
 </body>
 </html>
