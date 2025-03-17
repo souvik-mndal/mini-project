@@ -119,7 +119,7 @@ body {
   background-color: #0f0d0d;
   min-height: 100vh;
   /* border: .1px solid white; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 #page1{
   height: 159vh;
@@ -135,6 +135,13 @@ body {
 }
 #page1 #nav-bar #part1{
   font-size: 2vw;
+}
+#page1 #nav-bar #part1 abbr{
+  text-decoration: none;
+
+}
+#page1 #nav-bar #part1 abbr:hover{
+  cursor: pointer;
 }
 #page1 #nav-bar #part2{
   display: flex;
