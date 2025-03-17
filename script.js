@@ -104,15 +104,15 @@ function page1(){
             scroller:"#wrapper",
             // markers:true,
             scrub:2,
-            start:"top 18%",
+            start:"top 22%",
              end:"top -15%"
         }
     })
     tl.to("#page1 #hero #one",{
-        x:-100,
+        x:-95,
     },"h1")
     tl.to("#page1 #hero #two",{
-        x:85,
+        x:83,
     },"h1")
     tl.to("#page1 #engage",{
         width:"97vw",
@@ -130,12 +130,12 @@ page1();
 function page2(){
     var tl = gsap.timeline({
         scrollTrigger:{
-            trigger:"#page2",
+            trigger:"#page2 h1",
             scroller:"#wrapper",
             // markers:true,
             scrub:2,
-            start:"top 70%",
-             end:"top 30%"
+            start:"top 55%",
+             end:"top 25%"
         }
     })
     tl.to("#page1,#page2",{
