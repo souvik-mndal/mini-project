@@ -84,7 +84,7 @@ function loader() {
         opacity:0,
         duration:.8
     })
-    loadertl.from(".h1cont",{
+    loadertl.from(".h1cont h1",{
         y:38,
         opacity:0,
         duration:.5,

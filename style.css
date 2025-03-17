@@ -162,14 +162,21 @@ body {
 }
 #hero{
   /* background-color: aqua; */
-  padding: 5vw 5.3vw;
+  padding: 5vw 0vw;
+}
+#hero .h1cont{
+  /* background-color: red;
+  border: 1px solid black; */
+  overflow: hidden;
+  padding: 0vw 5.3vw;
+
 }
 #hero h1{
   color: white;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 7vw;
   font-weight: 450;
-  line-height: 1.05;
+  line-height: 1.27;
   letter-spacing: -4px;
 }
 
