@@ -17,7 +17,7 @@ html, body {
     grid-template-columns: 20vw 80vw;
 }
 #sidebar{
-    /* background-color: rgb(214, 211, 211); */
+    background-color: rgba(237, 234, 234, 0.819);
     
     /* background-color: red; */
     /* position: fixed; */
@@ -38,12 +38,22 @@ html, body {
     cursor: pointer;
   }
 #sidebar #sidecont{
-    background-color: aqua;
+    /* background-color: aqua; */
     padding: 3vw 0 0 0vw;
 }  
 #sidebar #sidecont .sideicon{
     font-size: 1.8vw;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: .7vw 0 .7vw .4vw;
     border-radius: 10px;
+}
+#sidebar #sidecont a:link {
+    color: rgb(0, 0, 0);
+}
+
+#sidebar #sidecont a:visited {
+    color: rgb(0, 0, 0);
+}
+#sidebar #sidecont .sideicon:hover{
+    background-color: rgba(223, 214, 214, 0.881);
 }
