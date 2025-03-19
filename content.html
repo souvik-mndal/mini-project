@@ -29,8 +29,41 @@
                     </div>
                     <div id="logout-icon"><i class="ri-shut-down-line"></i></div>
                 </div>
+                <div id="head">
+                    <h2>Groups</h2>
+                    <button id="create-grp">Create</button>
+                    <div id="create-grp-form">
+                        <div id="cont">
+                            <i id="cross" class="ri-close-large-line"></i>
+                            <form  method="post">
+                                <h2>Want to create a group?</h2>
+                                <p class="error" id="error-message"></p>
+                                <div id="takeinp">
+                                    
+                                    <label for="grpName">Group name</label><br>
+                                    <input class="inp" type="text" id="grpName" name="groupName" placeholder="Anything..." autocomplete="on" required><br>
+                                    
+                                </div>
+                                
+                                <input id="submit" type="submit" name="createGroup" value="Create">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
+    <script>
+        var createGrp = document.querySelector("#create-grp");
+        var NewGrpForm = document.querySelector("#create-grp-form");
+        var GrpFormClose = document.querySelector("#cross");
+        createGrp.addEventListener("click",function(){
+            NewGrpForm.style.display="initial";
+        })
+        GrpFormClose.addEventListener("click",function(){
+            NewGrpForm.style.display="none";
+        })
+    </script>
 </body>
 </html>
