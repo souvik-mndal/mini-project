@@ -22,6 +22,9 @@ html, body {
     /* background-color: red; */
     /* position: fixed; */
     padding: 2vw 0 0 2vw;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 #maincont{
     /* background-color: aqua; */
@@ -81,6 +84,9 @@ html, body {
 #maincont #nav-bar i{
     font-size: 1.5vw;
     cursor: pointer;
+}#maincont #nav-bar i:hover{
+    color: red;
+    
 }
 #maincont #head{
     padding: 1.5vw 1vw;
@@ -226,4 +232,19 @@ html, body {
     text-align: start;
     margin-left: 10px;
     margin-top: 30px;
+    
+}
+#grpcont{
+    padding: 0vw 2vw;
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    column-gap: 3vw;
+    row-gap: 2vw;
+    justify-content: center;
+}
+.box{
+    height: 40vh;
+    width: 20vw;
+    background-color: red;
 }
