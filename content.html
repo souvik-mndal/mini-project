@@ -35,7 +35,7 @@
                     <div id="create-grp-form">
                         <div id="cont">
                             <i id="cross" class="ri-close-large-line" ></i>
-                            <form  method="post">
+                            <form action="logindb.php" method="post">
                                 <h2>Want to create a group?</h2>
                                 <p class="error" id="error-message"></p>
                                 <div id="takeinp">
@@ -48,7 +48,7 @@
                                         <img id="preview" src="" alt="Preview" style="display: none;">
                                         <span id="upload-text">Upload Image</span>
                                     </label>
-                                    <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)">
+                                    <input type="file" id="imageUpload" name="grpImage" accept="image/*" onchange="previewImage(event)">
                                     
                                 </div>
                                 

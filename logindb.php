@@ -6,6 +6,9 @@
     $conn = "";
 
     $conn = mysqli_connect($db_server,$db_user,$db_pass,$db_name);
+    // if($conn){
+    //     echo "connected";
+    // }
 ?>
 <?php
     if(isset($_POST["newSubmit"])){
@@ -39,6 +42,25 @@
         }
     }
 ?>
+<?php
+    if(isset($_POST["createGroup"])){
+        $grpName = $_POST["groupName"];
+        $grpDesc = $_POST["groupDesc"];
+        $grpImg = $_POST["grpImage"];
+        $sql = "INSERT INTO groupcreation (groupName,groupDesc,groupImage)
+                VALUES ('$grpName','$grpDesc','$grpImg')";
+        // try{
+            mysqli_query($conn,$sql);
+            // echo "<h1>DATA INSERTED SUCCESSFULLY</h1>";
+            // header("Location:content.html");
+        // }
+        // catch(mysqli_sql_exception){
+        //     header("Location: signup.html?error=Email has already been taken");
+        // }
+        
+    }
+?>
+
 <?php
     mysqli_close($conn);
 ?>
