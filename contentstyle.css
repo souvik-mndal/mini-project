@@ -130,7 +130,7 @@ html, body {
     height: 100%;
     width: 100%;
     backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.632);
+    background-color: rgba(0, 0, 0, 0.248);
     position: relative;
     padding: 3vw 1vw 0 1vw;
     border-radius: 40px;
@@ -251,9 +251,4 @@ html, body {
     justify-content: center;
     width: 100%;
     /* background-color: aqua; */
-}
-.box{
-    height: 40vh;
-    width: 20vw;
-    background-color: red;
 }

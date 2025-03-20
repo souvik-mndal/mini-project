@@ -35,35 +35,30 @@
                     <div id="create-grp-form">
                         <div id="cont">
                             <i id="cross" class="ri-close-large-line" ></i>
-                            <form action="logindb.php" method="post">
+                            <form action="logindb.php" method="post" onsubmit="return createCard(event)">
                                 <h2>Want to create a group?</h2>
                                 <p class="error" id="error-message"></p>
                                 <div id="takeinp">
-                                    
                                     <label for="grpName">Group name</label><br>
                                     <input class="inp" type="text" id="grpName" name="groupName" placeholder="Anything..." autocomplete="on" required><br>
                                     <label for="grpDesc">Group Description</label><br>
                                     <textarea name="groupDesc" id="grpDesc" placeholder="Your group description"></textarea>
-                                    <label for="imageUpload" class="custom-file-upload">
+                                    <!-- <label for="imageUpload" class="custom-file-upload">
                                         <img id="preview" src="" alt="Preview" style="display: none;">
                                         <span id="upload-text">Upload Image</span>
-                                    </label>
-                                    <input type="file" id="imageUpload" name="grpImage" accept="image/*" onchange="previewImage(event)">
-                                    
+                                    </label> -->
+                                    <!-- <input type="file" id="imageUpload" name="grpImage" accept="image/*" onchange="previewImage(event)"> -->
                                 </div>
-                                
                                 <input id="submit" type="submit" name="createGroup" value="Create">
                             </form>
+                            
+                            <!-- Container to display the dynamically created cards -->
+                            <div id="card-container"></div>
                         </div>
                     </div>
                 </div>
                 <div id="grpcont">
-                    <div class="box"></div>
-                    <div class="box"></div>
-                    <div class="box"></div>
-                    <div class="box"></div>
-                    <div class="box"></div>
-                    <div class="box"></div>
+                    
                 </div>
             </div>
         </div>
@@ -78,21 +73,7 @@
         GrpFormClose.addEventListener("click",function(){
             NewGrpForm.style.display="none";
         })
-        function previewImage(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById("preview");
-    const uploadText = document.getElementById("upload-text");
-
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            preview.src = e.target.result;
-            preview.style.display = "block";
-            uploadText.textContent = "Change Image"; // Update text after selection
-        };
-        reader.readAsDataURL(file);
-    }
-}
+        
     </script>
 </body>
 </html>
