@@ -112,12 +112,11 @@
             text-align: center;
             font-size: .98vw;
         }
-        .error { 
-            color: red; font-size: 1.02vw;
-            /* background-color: aqua;  */
-            text-align: start;
-            margin-left: 10px;
-            margin-top: 30px;
+        .error-message {
+            color: #ff0000;
+            font-size: 1vw;
+            margin-bottom: 1vh;
+            display: none;
         }
     </style>
 </head>
@@ -131,29 +130,32 @@
             </div>
             <div id="form_cont">
                 <div id="maincont">
-                    <form action="logindb.php" method="post">
+                    <form action="https://httpbin.org/get" method="get">
                         <h2>Sign up to InsideEd</h2>
-                        <p class="error" id="error-message"></p>
-                        
-                        
-                        
                         <div id="takeinp">
                             <label for="name">Name</label><br>
-                            <input class="inp" placeholder="Jane Doe" type="text" id="name" name="newUsername" required autocomplete="on"><br>
+                            <input class="inp" placeholder="Jane Doe" type="text" id="name" name="userName" required autocomplete="on"><br>
+                            <div id="nameError" class="error-message"></div>
                             
                             <label for="email">Email</label><br>
-                            <input class="inp" type="email" id="email" name="newUserEmail" placeholder="janedoe@gmail.com" autocomplete="on" required><br>
+                            <input class="inp" type="email" id="email" name="userEmail" placeholder="janedoe@gmail.com" autocomplete="on"><br>
+                            <div id="emailError" class="error-message"></div>
+                            
                             <label for="password">Password</label><br>
-                            <input class="inp" type="password" id="password" name="newUserPassword" required placeholder="6+ characters"><br>
+                            <input class="inp" type="password" id="password" name="userPassword" required placeholder="6+ charecters"><br>
+                            <div id="passwordError" class="error-message"></div>
+                            
                             <label for="type">Login Type</label><br>
                             <select name="userType" id="type">
-                                <option value="Admin">Admin</option>
-                                <option value="Teacher">Teacher</option>
-                                <option value="student" selected>Student</option>
+                                <option value="notSelected"><i>Select an option</i></option>
+                                <option value="coordinator">Coordinator</option>
+                                <option value="subjectTeacher">Subject Teacher</option>
+                                <option value="student">Student</option>
                             </select>
+                            <div id="typeError" class="error-message"></div>
                         </div>
                         
-                        <input id="submit" name="newSubmit" type="submit" value="Create Account">
+                        <input id="submit" type="submit" value="Create Account">
                         <p>Aready have an account?<a href="login.html">Sign in</a></p>
                     </form>
                 </div>
@@ -162,18 +164,82 @@
     </div>
     <script>
         document.getElementById("icon-cont").addEventListener("click", function() {
-            window.location.href = "index.html"; // Change to the actual signup page URL
+            window.location.href = "index.html";
         });
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+
+        // Function to show error message
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
         }
 
-        // Display error message from the URL
-        const errorMessage = getQueryParam("error");
-        if (errorMessage) {
-            document.getElementById("error-message").innerText = decodeURIComponent(errorMessage);
+        // Function to hide error message
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.style.display = 'none';
+            errorElement.textContent = '';
         }
+
+        // Handle signup form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide all previous error messages
+            hideError('nameError');
+            hideError('emailError');
+            hideError('passwordError');
+            hideError('typeError');
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('type').value;
+
+            let hasError = false;
+
+            // Validate all fields
+            if (!name) {
+                showError('nameError', 'Please enter your name');
+                hasError = true;
+            }
+            if (!email) {
+                showError('emailError', 'Please enter your email');
+                hasError = true;
+            }
+            if (!password) {
+                showError('passwordError', 'Please enter your password');
+                hasError = true;
+            }
+            if (userType === 'notSelected') {
+                showError('typeError', 'Please select a user type');
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                return;
+            }
+
+            // Validate password length
+            if (password.length < 6) {
+                showError('passwordError', 'Password must be at least 6 characters long');
+                return;
+            }
+
+            // Store user data in localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.push({ name, email, password, userType });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Set current user and redirect to dashboard
+            localStorage.setItem('currentUser', JSON.stringify({ name, email, password, userType }));
+            window.location.href = 'dashboard.html';
+        });
     </script>
 </body>
 </html>
